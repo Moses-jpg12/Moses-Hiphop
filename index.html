@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moses' Hip-Hop Bulletin | US & SA Hip-Hop Culture</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        },
+                        hiphop: {
+                            black: '#0a0a0c',
+                            card: '#121216',
+                            border: '#262630',
+                            accent: '#ff3b30',
+                            saGreen: '#007a4d',
+                            saGold: '#ffb81c'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Cabinet Grotesk', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a0a0c;
+            color: #e4e4e7;
+            font-family: 'Inter', sans-serif;
+        }
+        .heading-font {
+            font-family: 'Cabinet Grotesk', sans-serif;
+        }
+        .mono-font {
+            font-family: 'Space Grotesk', monospace;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262630;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #eab308;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #ffe066 0%, #eab308 50%, #b45309 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .sa-flag-gradient {
+            background: linear-gradient(90deg, #007a4d 0%, #ffb81c 50%, #002395 100%);
+        }
+        .us-flag-gradient {
+            background: linear-gradient(90deg, #b22234 0%, #ffffff 50%, #3c3b6e 100%);
+        }
+        .pulse-live {
+            animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-yellow-500 selection:text-black">
+
+    <!-- Ticker Bar -->
+    <div class="bg-black border-b border-hiphop-border text-xs py-2 px-4 flex items-center justify-between overflow-hidden">
+        <div class="flex items-center space-x-3 whitespace-nowrap overflow-x-auto no-scrollbar">
+            <span class="bg-red-600 text-white font-bold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider flex items-center gap-1">
+                <span class="w-2 h-2 rounded-full bg-white pulse-live"></span> BREAKING
+            </span>
+            <span class="text-zinc-400">
+                <strong class="text-white">US:</strong> Kendrick Lamar announces global stadium tour & North American dates.
+            </span>
+            <span class="text-zinc-600">|</span>
+            <span class="text-zinc-400">
+                <strong class="text-white">SA:</strong> Blxckie & Nasty C top charts across Johannesburg and Atlanta playlists.
+            </span>
+            <span class="text-zinc-600">|</span>
+            <span class="text-zinc-400">
+                <strong class="text-white">CULTURE:</strong> Moses' Hip-Hop Vault releases classic 90s Kwaito-HipHop archival tapes.
+            </span>
+        </div>
+        <div class="hidden md:flex items-center space-x-4 text-zinc-400 text-xs">
+            <span><i class="fa-solid font-bold text-yellow-500 fa-location-dot mr-1"></i> USA ↔ SOUTH AFRICA</span>
+            <span id="current-date" class="mono-font text-zinc-500"></span>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-hiphop-black/90 backdrop-blur-md border-b border-hiphop-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" onclick="showSection('feed'); return false;" class="flex items-center space-x-3 group">
+                <div class="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center font-black text-black text-2xl shadow-lg shadow-yellow-500/20 group-hover:scale-105 transition-transform">
+                    M
+                </div>
+                <div>
+                    <h1 class="heading-font text-2xl font-black tracking-tight leading-none text-white flex items-center gap-2">
+                        MOSES <span class="gold-gradient-text">HIP-HOP</span>
+                    </h1>
+                    <p class="text-[11px] mono-font text-zinc-400 tracking-widest uppercase">
+                        The Transatlantic Rap Gospel (US ↔ SA)
+                    </p>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-1 text-sm font-semibold">
+                <button onclick="filterArticles('all')" class="nav-btn px-4 py-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800 transition">
+                    <i class="fa-solid fa-fire mr-1 text-yellow-500"></i> All News
+                </button>
+                <button onclick="filterArticles('US')" class="nav-btn px-4 py-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800 transition">
+                    🇺🇸 US Scene
+                </button>
+                <button onclick="filterArticles('SA')" class="nav-btn px-4 py-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800 transition">
+                    🇿🇦 SA Scene
+                </button>
+                <button onclick="showSection('history')" class="nav-btn px-4 py-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800 transition">
+                    <i class="fa-solid fa-timeline mr-1 text-yellow-500"></i> Origins & History
+                </button>
+                <button onclick="showSection('spotlight')" class="nav-btn px-4 py-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800 transition">
+                    <i class="fa-solid fa-record-vinyl mr-1 text-yellow-500"></i> Beat Lab
+                </button>
+            </nav>
+
+            <!-- Actions Right -->
+            <div class="flex items-center space-x-3">
+                <div class="relative hidden sm:block">
+                    <input type="text" id="search-input" onkeyup="handleSearch()" placeholder="Search artist, track, city..." 
+                           class="bg-zinc-900 border border-zinc-800 text-sm text-white rounded-full pl-9 pr-4 py-1.5 focus:outline-none focus:border-yellow-500 w-48 transition-all focus:w-64">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-zinc-500 text-xs"></i>
+                </div>
+                
+                <button id="beat-player-toggle" onclick="toggleBeatLabModal()" class="bg-gradient-to-r from-yellow-500 to-amber-600 text-black font-bold text-xs px-3 py-2 rounded-full flex items-center space-x-2 hover:brightness-110 transition shadow-md">
+                    <i class="fa-solid fa-drum text-sm"></i>
+                    <span class="hidden sm:inline">Moses Beat Synth</span>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-zinc-400 hover:text-white text-xl p-2">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-950 border-b border-zinc-800 px-4 pt-3 pb-6 space-y-2 text-sm">
+            <input type="text" id="search-input-mobile" onkeyup="handleSearchMobile()" placeholder="Search Hip-Hop news..." 
+                   class="w-full bg-zinc-900 border border-zinc-800 text-sm text-white rounded-lg px-3 py-2 mb-3">
+            <button onclick="filterArticles('all'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded text-zinc-300 hover:bg-zinc-900">
+                <i class="fa-solid fa-fire mr-2 text-yellow-500"></i> All Breaking News
+            </button>
+            <button onclick="filterArticles('US'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded text-zinc-300 hover:bg-zinc-900">
+                🇺🇸 US Rap Culture & News
+            </button>
+            <button onclick="filterArticles('SA'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded text-zinc-300 hover:bg-zinc-900">
+                🇿🇦 SA Hip-Hop & Township Beats
+            </button>
+            <button onclick="showSection('history'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded text-zinc-300 hover:bg-zinc-900">
+                <i class="fa-solid fa-timeline mr-2 text-yellow-500"></i> Origins & History Timeline
+            </button>
+            <button onclick="showSection('spotlight'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded text-zinc-300 hover:bg-zinc-900">
+                <i class="fa-solid fa-record-vinyl mr-2 text-yellow-500"></i> Beat Lab & Audio Sampler
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <div id="section-feed">
+            <!-- Hero Featured Article -->
+            <div id="hero-feature-container" class="mb-10">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <!-- Scene Filter Buttons & Section Header -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 pb-4 border-b border-zinc-800 gap-4">
+                <div>
+                    <h2 class="heading-font text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2">
+                        <span>LATEST BULLETIN</span>
+                        <span class="text-xs font-mono font-normal bg-zinc-800 text-yellow-400 px-2.5 py-1 rounded-full uppercase tracking-wider">Curated by Moses</span>
+                    </h2>
+                    <p class="text-zinc-400 text-sm mt-1">Cross-continental reporting on Bronx origins, Jozi streets, trap flows & 808s.</p>
+                </div>
+
+                <!-- Filters -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterArticles('all')" id="btn-filter-all" class="filter-btn active bg-yellow-500 text-black font-bold text-xs px-4 py-2 rounded-full transition">
+                        All Stories
+                    </button>
+                    <button onclick="filterArticles('US')" id="btn-filter-US" class="filter-btn bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-medium text-xs px-4 py-2 rounded-full border border-zinc-800 transition flex items-center gap-1.5">
+                        <span>🇺🇸</span> USA Focus
+                    </button>
+                    <button onclick="filterArticles('SA')" id="btn-filter-SA" class="filter-btn bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-medium text-xs px-4 py-2 rounded-full border border-zinc-800 transition flex items-center gap-1.5">
+                        <span>🇿🇦</span> SA Focus
+                    </button>
+                    <button onclick="filterArticles('History')" id="btn-filter-History" class="filter-btn bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-medium text-xs px-4 py-2 rounded-full border border-zinc-800 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-book-bookmark text-yellow-500"></i> Deep History
+                    </button>
+                </div>
+            </div>
+
+            <!-- Article Cards Grid -->
+            <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Articles dynamically generated here -->
+            </div>
+        </div>
+
+        <!-- History Section (Hidden by default) -->
+        <div id="section-history" class="hidden">
+            <div class="mb-10 text-center max-w-3xl mx-auto">
+                <span class="bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 text-xs font-mono font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    The Archive
+                </span>
+                <h2 class="heading-font text-3xl sm:text-5xl font-black text-white mt-3">
+                    THE HIP-HOP GOSPEL: US & SA ORIGINS
+                </h2>
+                <p class="text-zinc-400 text-sm sm:text-base mt-3">
+                     Moses' definitive guide to how a street culture birthed in 1973 Bronx block parties crossed oceans to ignite South Africa's Kwaito, Spaza, and modern Trap-Piano movement.
+                </p>
+            </div>
+
+            <!-- Timeline Comparison Toggle -->
+            <div class="flex justify-center mb-10">
+                <div class="bg-zinc-900 p-1.5 rounded-xl border border-zinc-800 inline-flex space-x-1">
+                    <button onclick="switchTimeline('US')" id="timeline-btn-US" class="px-5 py-2 rounded-lg text-xs font-bold transition bg-yellow-500 text-black shadow">
+                        🇺🇸 US Timeline (1970s–Present)
+                    </button>
+                    <button onclick="switchTimeline('SA')" id="timeline-btn-SA" class="px-5 py-2 rounded-lg text-xs font-bold transition text-zinc-400 hover:text-white">
+                        🇿🇦 SA Timeline (1980s–Present)
+                    </button>
+                    <button onclick="switchTimeline('FUSION')" id="timeline-btn-FUSION" class="px-5 py-2 rounded-lg text-xs font-bold transition text-zinc-400 hover:text-white">
+                        🌐 Transatlantic Connection
+                    </button>
+                </div>
+            </div>
+
+            <!-- Timeline View Area -->
+            <div id="timeline-content" class="relative max-w-4xl mx-auto space-y-8">
+                <!-- Dynamic timeline content injected here -->
+            </div>
+        </div>
+
+        <!-- Beat Lab & Spotlight Section (Hidden by default) -->
+        <div id="section-spotlight" class="hidden">
+            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-10 mb-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="text-yellow-500 font-mono text-xs font-bold uppercase tracking-widest block mb-2">
+                            Interactive Experience
+                        </span>
+                        <h2 class="heading-font text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                            MOSES BEAT & RHYTHM LAB
+                        </h2>
+                        <p class="text-zinc-400 text-sm mt-3 leading-relaxed">
+                            Hip-Hop relies on the heartbeat of the drum. Play with Moses' real-time Web Synthesizer below to experiment with classic US 808 Trap patterns and South African Amapiano-HipHop log drums.
+                        </p>
+
+                        <div class="mt-6 flex flex-wrap gap-3">
+                            <button onclick="playPresetBeat('boombap')" class="bg-zinc-800 hover:bg-zinc-700 text-white font-mono text-xs px-4 py-2.5 rounded-lg border border-zinc-700 flex items-center gap-2">
+                                <i class="fa-solid fa-play text-yellow-500"></i> US Boom Bap (90 BPM)
+                            </button>
+                            <button onclick="playPresetBeat('trap')" class="bg-zinc-800 hover:bg-zinc-700 text-white font-mono text-xs px-4 py-2.5 rounded-lg border border-zinc-700 flex items-center gap-2">
+                                <i class="fa-solid fa-play text-yellow-500"></i> Atlanta Trap 808 (140 BPM)
+                            </button>
+                            <button onclick="playPresetBeat('sa_piano')" class="bg-zinc-800 hover:bg-zinc-700 text-white font-mono text-xs px-4 py-2.5 rounded-lg border border-zinc-700 flex items-center gap-2">
+                                <i class="fa-solid fa-play text-yellow-500"></i> SA Trap-Piano (112 BPM)
+                            </button>
+                            <button onclick="stopSynthBeat()" class="bg-red-500/20 text-red-400 hover:bg-red-500/30 font-mono text-xs px-4 py-2.5 rounded-lg border border-red-500/30">
+                                <i class="fa-solid fa-stop mr-1"></i> Stop Sound
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Visual Sequencer Pads -->
+                    <div class="bg-black/80 border border-zinc-800 rounded-2xl p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span id="synth-status" class="mono-font text-xs text-yellow-400 font-semibold">Engine: Ready</span>
+                            <span class="text-xs text-zinc-500 font-mono">Web Audio API Synth</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-3">
+                            <button onclick="triggerPadSound('kick')" class="h-20 bg-zinc-900 hover:bg-yellow-500/20 active:bg-yellow-500 text-yellow-500 font-mono text-xs rounded-xl border border-zinc-800 flex flex-col items-center justify-center transition">
+                                <i class="fa-solid fa-drum text-lg mb-1"></i>
+                                KICK / 808
+                            </button>
+                            <button onclick="triggerPadSound('snare')" class="h-20 bg-zinc-900 hover:bg-yellow-500/20 active:bg-yellow-500 text-yellow-500 font-mono text-xs rounded-xl border border-zinc-800 flex flex-col items-center justify-center transition">
+                                <i class="fa-solid fa-hand-clasp text-lg mb-1"></i>
+                                SNARE / CLAP
+                            </button>
+                            <button onclick="triggerPadSound('hihat')" class="h-20 bg-zinc-900 hover:bg-yellow-500/20 active:bg-yellow-500 text-yellow-500 font-mono text-xs rounded-xl border border-zinc-800 flex flex-col items-center justify-center transition">
+                                <i class="fa-solid fa-compact-disc text-lg mb-1"></i>
+                                HI-HAT
+                            </button>
+                            <button onclick="triggerPadSound('logdrum')" class="h-20 bg-zinc-900 hover:bg-yellow-500/20 active:bg-yellow-500 text-yellow-500 font-mono text-xs rounded-xl border border-zinc-800 flex flex-col items-center justify-center transition">
+                                <i class="fa-solid fa-bolt text-lg mb-1"></i>
+                                SA LOG DRUM
+                            </button>
+                        </div>
+                        <p class="text-zinc-500 text-[11px] text-center mt-4 italic">Tap pads to play custom beat triggers directly in your browser.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spotlight Cards: Key US vs SA Icons -->
+            <h3 class="heading-font text-2xl font-bold text-white mb-6">PIONEERS & REVOLUTIONARIES SPOTLIGHT</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Icon 1 -->
+                <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-5 hover:border-yellow-500/50 transition">
+                    <div class="text-3xl mb-3">🇺🇸 👑</div>
+                    <h4 class="font-bold text-white text-lg">Kendrick Lamar</h4>
+                    <p class="text-xs text-yellow-500 font-mono mb-2">Compton, USA • Lyricist</p>
+                    <p class="text-zinc-400 text-xs leading-relaxed">Pinnacle of modern storytelling, Pulitzer prize winner, and architect of contemporary West Coast rap culture.</p>
+                </div>
+                <!-- Icon 2 -->
+                <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-5 hover:border-yellow-500/50 transition">
+                    <div class="text-3xl mb-3">🇿🇦 👑</div>
+                    <h4 class="font-bold text-white text-lg">AKA (Kiernan Forbes)</h4>
+                    <p class="text-xs text-yellow-500 font-mono mb-2">Cape Town/Jozi, SA • Legend</p>
+                    <p class="text-zinc-400 text-xs leading-relaxed">The "Supa Mega" who popularized mega stadium Hip-Hop in SA with undeniable pop-rap hooks and charisma.</p>
+                </div>
+                <!-- Icon 3 -->
+                <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-5 hover:border-yellow-500/50 transition">
+                    <div class="text-3xl mb-3">🇺🇸 🔥</div>
+                    <h4 class="font-bold text-white text-lg">Lauryn Hill & Tupac</h4>
+                    <p class="text-xs text-yellow-500 font-mono mb-2">90s US Golden Era</p>
+                    <p class="text-zinc-400 text-xs leading-relaxed">Provided the social conscience, soul, and poetic grit that shaped global hip-hop philosophy.</p>
+                </div>
+                <!-- Icon 4 -->
+                <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-5 hover:border-yellow-500/50 transition">
+                    <div class="text-3xl mb-3">🇿🇦 🚀</div>
+                    <h4 class="font-bold text-white text-lg">Nasty C & Blxckie</h4>
+                    <p class="text-xs text-yellow-500 font-mono mb-2">Durban/Dbn, SA • Global Wave</p>
+                    <p class="text-zinc-400 text-xs leading-relaxed">Pioneering SA hip-hop's modern international crossover with slick flows and North American cosigns.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Article Reader Modal -->
+    <div id="article-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
+            <button onclick="closeArticleModal()" class="absolute top-4 right-4 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 w-10 h-10 rounded-full flex items-center justify-center transition z-10">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div id="modal-content" class="p-6 sm:p-10">
+                <!-- Dynamically loaded content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-zinc-800 mt-16 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                <div class="md:col-span-2">
+                    <a href="#" class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-yellow-500 rounded-lg flex items-center justify-center font-black text-black text-xl">
+                            M
+                        </div>
+                        <span class="heading-font text-xl font-black text-white">MOSES <span class="gold-gradient-text">HIP-HOP</span></span>
+                    </a>
+                    <p class="text-zinc-400 text-xs leading-relaxed max-w-md">
+                        Moses' Hip-Hop Bulletin is an independent journal documenting the roots, breaking headlines, street philosophy, and crossover sounds between the USA and South African hip-hop scenes.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-mono text-xs font-bold uppercase tracking-wider mb-3">Coverage</h4>
+                    <ul class="space-y-2 text-xs text-zinc-400">
+                        <li><a href="#" onclick="filterArticles('US'); return false;" class="hover:text-yellow-500 transition">🇺🇸 US Breaking Headlines</a></li>
+                        <li><a href="#" onclick="filterArticles('SA'); return false;" class="hover:text-yellow-500 transition">🇿🇦 South African Hip-Hop</a></li>
+                        <li><a href="#" onclick="showSection('history'); return false;" class="hover:text-yellow-500 transition">📜 Bronx to Jozi History</a></li>
+                        <li><a href="#" onclick="showSection('spotlight'); return false;" class="hover:text-yellow-500 transition">🥁 Moses Audio Lab</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-mono text-xs font-bold uppercase tracking-wider mb-3">Get Moses' Bulletin</h4>
+                    <p class="text-xs text-zinc-500 mb-3">Receive weekly underground reports and track drops.</p>
+                    <form onsubmit="handleSubscribe(event)" class="space-y-2">
+                        <input type="email" id="subscribe-email" required placeholder="Enter your email" class="w-full bg-zinc-900 border border-zinc-800 text-xs text-white rounded-lg px-3 py-2 focus:outline-none focus:border-yellow-500">
+                        <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold text-xs py-2 rounded-lg transition">
+                            Subscribe to Bulletin
+                        </button>
+                    </form>
+                    <div id="subscribe-success" class="hidden text-[11px] text-green-400 mt-2">
+                        <i class="fa-solid fa-check mr-1"></i> Subscribed to Moses' Hip-Hop Dispatch!
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-zinc-900 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-600 gap-4">
+                <p>&copy; 2026 Moses' Hip-Hop Hub. All rights reserved. Culture preserved across oceans.</p>
+                <div class="flex space-x-4 text-zinc-400">
+                    <a href="#" class="hover:text-yellow-500"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="hover:text-yellow-500"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-yellow-500"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-yellow-500"><i class="fa-brands fa-spotify"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Article Database maintained by Moses
+        const articles = [
+            {
+                id: '1',
+                title: 'The Transatlantic Bridge: How South African Trap-Piano is Influencing US Producers',
+                region: 'SA',
+                tag: 'Cultural Crossover',
+                date: 'September 2026',
+                author: 'Moses Staff',
+                readTime: '5 min read',
+                image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
+                excerpt: 'From Atlanta studios to Johannesburg basements, producers are fusing heavy 808 sub-bass with amapiano log drums, creating a new wave of global hip-hop bounce.',
+                featured: true,
+                content: `
+                    <p class="text-zinc-300 leading-relaxed mb-4">
+                        Hip-hop has always been a transatlantic conversation. When Afrika Bambaataa and Kool Herc were piecing together breakbeats in 1970s New York, they drew from African rhythms. Today, that connection has closed its loop as South African hip-hop producers spearhead the "Trap-Piano" sound.
+                    </p>
+                    <h3 class="text-xl font-bold text-white mb-2">The Durban & Atlanta Connection</h3>
+                    <p class="text-zinc-300 leading-relaxed mb-4">
+                        Major US producers like Metro Boomin and Pharrell Williams have openly praised South Africa's rhythmic innovation. The syncopated woodblock patterns and deep wooden log drum resonances are being seamlessly integrated into trap 808 templates.
+                    </p>
+                    <blockquote class="border-l-4 border-yellow-500 pl-4 italic text-yellow-200 my-6">
+                        "When you hear a Blxckie or Maglera Doe Boy track, you aren't just hearing rap—you're hearing 30 years of Johannesburg street heritage colliding with modern 808 technology." — Moses
+                    </blockquote>
+                    <p class="text-zinc-300 leading-relaxed">
+                        Artists like Nasty C, Blxckie, and Focalistic have demonstrated that rap in South Africa can cross over effortlessly into North American festival line-ups without forfeiting authentic vernaculars like Zulu, Xhosa, or Setswana slang.
+                    </p>
+                `
+            },
+            {
+                id: '2',
+                title: 'US Battle Rap Renaissance: How Modern Lyricism Returned to the Forefront',
+                region: 'US',
+                tag: 'US Scene',
+                date: 'September 2026',
+                author: 'Moses Editor',
+                readTime: '6 min read',
+                image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80',
+                excerpt: 'Following high-profile lyricism feuds between rap titans, American hip-hop listeners are prioritizing double-entendres, poetic grit, and raw wordplay once again.',
+                featured: false,
+                content: `
+                    <p class="text-zinc-300 leading-relaxed mb-4">
+                        The past two years have witnessed a seismic shift in American hip-hop. After nearly a decade dominated by melodic auto-tune hooks and viral short-form audio clips, traditional lyricism has roared back to the center of cultural discourse.
+                    </p>
+                    <p class="text-zinc-300 leading-relaxed mb-4">
+                        Major rivalries tested the mettle of top-tier emcees, forcing fans and critics to scrutinize bar structures, subliminal storytelling, and authenticity.
+                    </p>
+                    <h3 class="text-xl font-bold text-white mb-2">Boom Bap & Underground Resurgence</h3>
+                    <p class="text-zinc-300 leading-relaxed">
+                        Labels like Griselda, alongside producers like The Alchemist and Hit-Boy, paved the way for this era. Listeners no longer accept superficial filler; they demand dense storytelling and vocal dexterity.
+                    </p>
+                `
+            },
+            {
+                id: '3',
+                title: 'Township Tales: How SA Spaza & Kwaito Laid the Bedrock for Modern SA Rap',
+                region: 'SA',
+                tag: 'History & Roots',
+                date: 'August 2026',
+                author: 'Moses Historian',
+                readTime: '7 min read',
+                image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80',
+                excerpt: 'Before South African hip-hop hit the charts, 90s Kwaito and Cape Town Spaza rap provided the anti-apartheid soundtrack and raw township perspective.',
+                featured: false,
+                content: `
+                    <p class="text-zinc-300 leading-relaxed mb-4">
+                        To understand modern South African rap gods like Cassper Nyovest, AKA, or YoungstaCPT, one must journey back to the late 1980s and early 1990s in Cape Town and Soweto.
+                    </p>
+                    <p class="text-zinc-300 leading-relaxed mb-4">
+                        Pioneers like Prophets of Da City (POC) used rap as a direct weapon against apartheid oppression. Later, Skwatta Kamp proved that independent rap crews could sell platinum numbers outta local taxis and street vendors.
+                    </p>
+                `
+            },
+            {
+                id: '4',
+                title: 'From Bronx Block Parties to Global Dominance: 50 Years of Hip-Hop Evolution',
+                region: 'History',
+                tag: 'Global Origin',
+                date: 'August 2026',
+                author: 'Moses Archive',
+                readTime: '8 min read',
+                image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80',
+                excerpt: 'Tracing August 11, 1973 at 1520 Sedgwick Avenue to the global multi-billion dollar culture spanning America, Africa, and beyond.',
+                featured: false,
+                content: `
+                    <p class="text-zinc-300 leading-relaxed mb-4">
+                        On August 11, 1973, DJ Kool Herc isolated the instrumental drum break on two turntables at a back-to-school party in the Bronx. He created the "breakbeat," giving birth to MCing, Breakdancing, Graffiti, and DJing.
+                    </p>
+                    <p class="text-zinc-300 leading-relaxed mb-4">
+                        By the late 1980s, Public Enemy and N.W.A injected political urgency and West Coast realism. By the 90s, Tupac, Biggie, and Nas crafted poetic masterworks. Today, Hip-Hop is the most listened-to genre on planet Earth.
+                    </p>
+                `
+            },
+            {
+                id: '5',
+                title: 'Atlanta’s Unbroken Run: Why the A-Town Remains Hip-Hop’s Creative Engine',
+                region: 'US',
+                tag: 'US Scene',
+                date: 'September 2026',
+                author: 'Moses Staff',
+                readTime: '4 min read',
+                image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80',
+                excerpt: 'OutKast opened the floodgates in 1995. Thirty years later, Atlanta continues to dictate sub-bass mixing, flow cadences, and fashion trends across the globe.',
+                featured: false,
+                content: `
+                    <p class="text-zinc-300 leading-relaxed mb-4">
+                        "The South got something to say." When Andre 3000 uttered those iconic words at the 1995 Source Awards, few predicted Atlanta would become the undeniable capital of modern rap music.
+                    </p>
+                    <p class="text-zinc-300 leading-relaxed">
+                        From T.I., Jeezy, and Gucci Mane pioneering Trap, to Future, Young Thug, and Lil Baby redefining cadence, Atlanta remains the global laboratory for street soundscapes.
+                    </p>
+                `
+            },
+            {
+                id: '6',
+                title: 'Maglera Doe Boy & The Renaissance of Vernacular Township Rap',
+                region: 'SA',
+                tag: 'SA Scene',
+                date: 'September 2026',
+                author: 'Moses Staff',
+                readTime: '5 min read',
+                image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80',
+                excerpt: 'Blending Kanana township storytelling with cinematic noir visuals, Maglera Doe Boy proves that local South African dialects carry supreme poetic gravity.',
+                featured: false,
+                content: `
+                    <p class="text-zinc-300 leading-relaxed mb-4">
+                        In an era dominated by smooth crossover melodies, Maglera Doe Boy brings gritty narrative realism from Kanana, Klerksdorp to the forefront of South African hip-hop.
+                    </p>
+                    <p class="text-zinc-300 leading-relaxed">
+                        Switching fluidly between English, Afrikaans, and Sesotho, he demonstrates how local linguistics create an unmatched atmosphere when set against soulful 808 backdrops.
+                    </p>
+                `
+            }
+        ];
+
+        // Initialize App State
+        let currentFilter = 'all';
+
+        function initApp() {
+            document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', {
+                weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'
+            });
+            renderArticles();
+            renderTimeline('US');
+        }
+
+        function renderArticles(filter = 'all', searchQuery = '') {
+            const grid = document.getElementById('articles-grid');
+            const heroContainer = document.getElementById('hero-feature-container');
+            
+            grid.innerHTML = '';
+            
+            let filtered = articles;
+
+            // Filter by Region/Category
+            if (filter !== 'all') {
+                if (filter === 'History') {
+                    filtered = filtered.filter(a => a.region === 'History' || a.tag.includes('History'));
+                } else {
+                    filtered = filtered.filter(a => a.region === filter);
+                }
+            }
+
+            // Filter by Search Query
+            if (searchQuery.trim() !== '') {
+                const q = searchQuery.toLowerCase();
+                filtered = filtered.filter(a => 
+                    a.title.toLowerCase().includes(q) || 
+                    a.excerpt.toLowerCase().includes(q) || 
+                    a.tag.toLowerCase().includes(q)
+                );
+            }
+
+            // Render Hero Article (Featured or First)
+            const featuredArticle = filtered.find(a => a.featured) || filtered[0];
+
+            if (featuredArticle && filter === 'all' && !searchQuery) {
+                heroContainer.innerHTML = `
+                    <div onclick="openArticleModal('${featuredArticle.id}')" class="group relative rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 cursor-pointer shadow-2xl hover:border-yellow-500/50 transition duration-300">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[420px]">
+                            <div class="lg:col-span-7 relative overflow-hidden min-h-[260px] lg:min-h-full">
+                                <img src="${featuredArticle.image}" alt="${featuredArticle.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent lg:hidden"></div>
+                                <span class="absolute top-4 left-4 bg-yellow-500 text-black font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                                    <i class="fa-solid fa-star mr-1"></i> Moses Featured
+                                </span>
+                            </div>
+                            <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center space-x-2 text-xs font-mono text-zinc-400 mb-3">
+                                        <span class="text-yellow-400 font-bold">${featuredArticle.region === 'SA' ? '🇿🇦 South Africa' : '🇺🇸 USA'}</span>
+                                        <span>•</span>
+                                        <span>${featuredArticle.date}</span>
+                                        <span>•</span>
+                                        <span>${featuredArticle.readTime}</span>
+                                    </div>
+                                    <h2 class="heading-font text-2xl sm:text-3xl font-black text-white group-hover:text-yellow-400 transition leading-tight mb-4">
+                                        ${featuredArticle.title}
+                                    </h2>
+                                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                                        ${featuredArticle.excerpt}
+                                    </p>
+                                </div>
+                                <div class="flex items-center justify-between pt-4 border-t border-zinc-800 text-xs">
+                                    <span class="text-zinc-400 font-medium"><i class="fa-solid fa-user-pen text-yellow-500 mr-1.5"></i> ${featuredArticle.author}</span>
+                                    <span class="text-yellow-500 font-bold flex items-center gap-1 group-hover:translate-x-1 transition">
+                                        Read Deep Dive <i class="fa-solid fa-arrow-right"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                heroContainer.innerHTML = '';
+            }
+
+            // Render Remaining Articles in Grid
+            const gridArticles = (featuredArticle && filter === 'all' && !searchQuery) 
+                ? filtered.filter(a => a.id !== featuredArticle.id)
+                : filtered;
+
+            if (gridArticles.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-zinc-500">
+                        <i class="fa-solid fa-compact-disc text-4xl mb-3 text-zinc-700"></i>
+                        <p class="text-sm">No stories found matching your search in Moses' archive.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            gridArticles.forEach(art => {
+                const card = document.createElement('div');
+                card.className = "bg-hiphop-card border border-hiphop-border rounded-2xl overflow-hidden flex flex-col justify-between hover:border-yellow-500/40 transition duration-300 group cursor-pointer";
+                card.onclick = () => openArticleModal(art.id);
+
+                const regionFlag = art.region === 'SA' ? '🇿🇦 SA' : art.region === 'US' ? '🇺🇸 US' : '🌐 History';
+
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="${art.image}" alt="${art.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-hiphop-card via-transparent to-transparent"></div>
+                            <span class="absolute top-3 left-3 bg-black/80 backdrop-blur-md text-white text-[11px] font-mono px-2.5 py-1 rounded-md border border-zinc-800">
+                                ${regionFlag}
+                            </span>
+                            <span class="absolute top-3 right-3 bg-yellow-500/90 text-black font-bold text-[10px] px-2 py-0.5 rounded uppercase">
+                                ${art.tag}
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center space-x-2 text-[11px] font-mono text-zinc-500 mb-2">
+                                <span>${art.date}</span>
+                                <span>•</span>
+                                <span>${art.readTime}</span>
+                            </div>
+                            <h3 class="heading-font text-lg font-bold text-white group-hover:text-yellow-400 transition leading-snug mb-2">
+                                ${art.title}
+                            </h3>
+                            <p class="text-zinc-400 text-xs line-clamp-3 leading-relaxed mb-4">
+                                ${art.excerpt}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 flex items-center justify-between border-t border-zinc-900 text-xs">
+                        <span class="text-zinc-500 font-medium">${art.author}</span>
+                        <span class="text-yellow-500 font-semibold group-hover:underline">Read Story <i class="fa-solid fa-chevron-right text-[10px] ml-1"></i></span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterArticles(region) {
+            currentFilter = region;
+            showSection('feed');
+            
+            // Update active state on filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-yellow-500', 'text-black', 'font-bold');
+                btn.classList.add('bg-zinc-900', 'text-zinc-300');
+            });
+
+            const activeBtn = document.getElementById(`btn-filter-${region}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-zinc-900', 'text-zinc-300');
+                activeBtn.classList.add('bg-yellow-500', 'text-black', 'font-bold');
+            }
+
+            renderArticles(region);
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('search-input').value;
+            renderArticles(currentFilter, query);
+        }
+
+        function handleSearchMobile() {
+            const query = document.getElementById('search-input-mobile').value;
+            renderArticles(currentFilter, query);
+        }
+
+        function showSection(sectionId) {
+            document.getElementById('section-feed').classList.add('hidden');
+            document.getElementById('section-history').classList.add('hidden');
+            document.getElementById('section-spotlight').classList.add('hidden');
+
+            document.getElementById(`section-${sectionId}`).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // History Timeline Data
+        const timelines = {
+            US: [
+                {
+                    year: '1973',
+                    title: 'The Birth in the Bronx',
+                    desc: 'DJ Kool Herc hosts the iconic 1520 Sedgwick Ave party, introducing dual turntable breaks. Grandmaster Flash and Afrika Bambaataa develop DJ techniques and Hip-Hop culture.'
+                },
+                {
+                    year: '1982-1988',
+                    title: 'Golden Era & Social Consciousness',
+                    desc: 'Grandmaster Flash & The Furious Five drop "The Message". Public Enemy, Eric B. & Rakim, and N.W.A introduce political commentary and West Coast gangsta rap realism.'
+                },
+                {
+                    year: '1990-1999',
+                    title: 'East Coast vs West Coast Prime',
+                    desc: 'Tupac Shakur, The Notorious B.I.G., Nas (Illmatic), and Wu-Tang Clan elevate rap storytelling into literary art. OutKast asserts Southern dominance at 1995 Source Awards.'
+                },
+                {
+                    year: '2000-2015',
+                    title: 'Southern Trap & Streaming Evolution',
+                    desc: 'Atlanta (T.I., Gucci Mane, Jeezy) pioneers Trap. Kanye West and Drake reshape melodic rap. Kendrick Lamar drops "To Pimp a Butterfly".'
+                },
+                {
+                    year: '2020-2026',
+                    title: 'Lyricism Revival & Global Crossover',
+                    desc: 'High-stakes battle rap, independent distribution dominance, and transatlantic collaborations with African producers.'
+                }
+            ],
+            SA: [
+                {
+                    year: '1988-1994',
+                    title: 'Anti-Apartheid Resistance Rap',
+                    desc: 'Prophets of Da City (POC) in Cape Town release pioneering Afrikaans and English anti-apartheid rap tapes, inspiring township youth.'
+                },
+                {
+                    year: '1995-2005',
+                    title: 'The Kwaito & Skwatta Kamp Era',
+                    desc: 'Kwaito blends slow house tempo with street chants. Skwatta Kamp breaks records as SA’s premier platinum rap group. Spaza rap flourishes in townships.'
+                },
+                {
+                    year: '2010-2018',
+                    title: 'Fill Up Stadiums & AKA vs Cassper',
+                    desc: 'AKA popularizes polished radio rap. Cassper Nyovest makes history by filling Johannesburg’s 20,000-capacity Dome and FNB Stadium independently.'
+                },
+                {
+                    year: '2019-2026',
+                    title: 'The Global Wave: Nasty C, Blxckie & Trap-Piano',
+                    desc: 'Nasty C signs international deals. Blxckie, Maglera Doe Boy, and Focalistic merge trap 808s with Amapiano, exporting SA culture globally.'
+                }
+            ],
+            FUSION: [
+                {
+                    year: '1998',
+                    title: 'Early US-SA Cosigns',
+                    desc: 'US artists like Talib Kweli & Dead Prez visit SA post-apartheid, creating early underground hip-hop solidarity.'
+                },
+                {
+                    year: '2017',
+                    title: 'Snoop Dogg & French Montana Collaborations',
+                    desc: 'US rap heavyweights begin featuring on SA tracks, recognizing Jozi and Cape Town as major rap strongholds.'
+                },
+                {
+                    year: '2024-2026',
+                    title: 'Trap-Piano Transatlantic Dominance',
+                    desc: 'Atlanta producers sample Amapiano log drums; SA emcees headline US festivals from New York to Los Angeles.'
+                }
+            ]
+        };
+
+        function switchTimeline(type) {
+            ['US', 'SA', 'FUSION'].forEach(t => {
+                const btn = document.getElementById(`timeline-btn-${t}`);
+                if (t === type) {
+                    btn.className = "px-5 py-2 rounded-lg text-xs font-bold transition bg-yellow-500 text-black shadow";
+                } else {
+                    btn.className = "px-5 py-2 rounded-lg text-xs font-bold transition text-zinc-400 hover:text-white";
+                }
+            });
+            renderTimeline(type);
+        }
+
+        function renderTimeline(type) {
+            const container = document.getElementById('timeline-content');
+            container.innerHTML = '';
+
+            const list = timelines[type] || timelines.US;
+
+            list.forEach((item, index) => {
+                const node = document.createElement('div');
+                node.className = "relative pl-8 sm:pl-32 py-4 group";
+                node.innerHTML = `
+                    <!-- Vertical Line -->
+                    <div class="absolute left-3 sm:left-24 top-0 bottom-0 w-0.5 bg-zinc-800 group-hover:bg-yellow-500/50 transition"></div>
+                    <!-- Node Dot -->
+                    <div class="absolute left-1.5 sm:left-[90px] top-6 w-3.5 h-3.5 rounded-full bg-yellow-500 border-4 border-black"></div>
+                    <!-- Year Label -->
+                    <div class="sm:absolute left-0 top-5 sm:w-20 text-xs font-mono font-bold text-yellow-500 mb-1 sm:mb-0 sm:text-right">
+                        ${item.year}
+                    </div>
+                    <!-- Content Card -->
+                    <div class="bg-zinc-900/90 border border-zinc-800 rounded-2xl p-5 hover:border-yellow-500/30 transition">
+                        <h4 class="heading-font text-lg font-bold text-white mb-2">${item.title}</h4>
+                        <p class="text-zinc-400 text-xs leading-relaxed">${item.desc}</p>
+                    </div>
+                `;
+                container.appendChild(node);
+            });
+        }
+
+        function openArticleModal(id) {
+            const art = articles.find(a => a.id === id);
+            if (!art) return;
+
+            const modalContent = document.getElementById('modal-content');
+            const regionBadge = art.region === 'SA' ? '🇿🇦 South Africa Scene' : art.region === 'US' ? '🇺🇸 United States Scene' : '🌐 History & Origins';
+
+            modalContent.innerHTML = `
+                <div class="mb-6">
+                    <span class="bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-[11px] font-mono font-bold px-3 py-1 rounded-full uppercase">
+                        ${regionBadge}
+                    </span>
+                    <h2 class="heading-font text-2xl sm:text-4xl font-black text-white mt-4 leading-tight">
+                        ${art.title}
+                    </h2>
+                    <div class="flex items-center space-x-3 text-xs font-mono text-zinc-400 mt-4 pb-4 border-b border-zinc-800">
+                        <span><i class="fa-solid fa-user-pen text-yellow-500 mr-1"></i> ${art.author}</span>
+                        <span>•</span>
+                        <span>${art.date}</span>
+                        <span>•</span>
+                        <span>${art.readTime}</span>
+                    </div>
+                </div>
+
+                <div class="rounded-2xl overflow-hidden mb-6 max-h-80">
+                    <img src="${art.image}" alt="${art.title}" class="w-full h-full object-cover">
+                </div>
+
+                <div class="prose prose-invert max-w-none text-sm leading-relaxed">
+                    ${art.content}
+                </div>
+
+                <!-- Moses Commentary Section -->
+                <div class="mt-8 pt-6 border-t border-zinc-800 bg-zinc-950/60 p-4 rounded-2xl border border-zinc-800">
+                    <h4 class="text-xs font-mono font-bold text-yellow-500 uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <div class="w-5 h-5 bg-yellow-500 rounded text-black flex items-center justify-center font-black text-xs">M</div>
+                        Moses' Editor Commentary
+                    </h4>
+                    <p class="text-xs text-zinc-400 italic">
+                        "Culture isn't static. Whether analyzing rap battles in New York or the spaza rhythms in Khayelitsha, Moses' Bulletin remains dedicated to keeping hip-hop history documented with absolute respect."
+                    </p>
+                </div>
+
+                <div class="mt-6 flex justify-between items-center text-xs text-zinc-500">
+                    <button onclick="copyArticleLink('${art.id}')" class="hover:text-white transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-link text-yellow-500"></i> Copy Story Link
+                    </button>
+                    <button onclick="closeArticleModal()" class="bg-yellow-500 text-black font-bold px-4 py-2 rounded-lg hover:bg-yellow-400 transition">
+                        Back to Bulletin
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('article-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArticleModal() {
+            document.getElementById('article-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function copyArticleLink(id) {
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href + '#article-' + id;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('Article link copied to clipboard!');
+        }
+
+        function handleSubscribe(e) {
+            e.preventDefault();
+            document.getElementById('subscribe-success').classList.remove('hidden');
+            document.getElementById('subscribe-email').value = '';
+        }
+
+        // Web Audio API Synthesizer for Moses Beat Lab
+        let audioCtx = null;
+        let activeInterval = null;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function triggerPadSound(type) {
+            const ctx = getAudioContext();
+            const now = ctx.currentTime;
+
+            if (type === 'kick') {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(130, now);
+                osc.frequency.exponentialRampToValueAtTime(0.01, now + 0.4);
+                gain.gain.setValueAtTime(1, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.4);
+            } else if (type === 'snare') {
+                // Noise buffer
+                const bufferSize = ctx.sampleRate * 0.2;
+                const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+                const noise = ctx.createBufferSource();
+                noise.buffer = buffer;
+                const filter = ctx.createBiquadFilter();
+                filter.type = 'highpass';
+                filter.frequency.value = 1000;
+                const gain = ctx.createGain();
+                gain.gain.setValueAtTime(0.7, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(ctx.destination);
+                noise.start(now);
+            } else if (type === 'hihat') {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(8000, now);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.08);
+            } else if (type === 'logdrum') {
+                // South African Amapiano Log Drum synth simulation
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(90, now);
+                osc.frequency.exponentialRampToValueAtTime(40, now + 0.25);
+                gain.gain.setValueAtTime(1, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.25);
+            }
+        }
+
+        function playPresetBeat(preset) {
+            stopSynthBeat();
+            showSection('spotlight');
+            document.getElementById('synth-status').innerText = `Engine: Playing (${preset.toUpperCase()})`;
+
+            let step = 0;
+            const bpm = preset === 'trap' ? 140 : preset === 'boombap' ? 90 : 112;
+            const intervalMs = (60 / bpm / 4) * 1000;
+
+            activeInterval = setInterval(() => {
+                if (preset === 'boombap') {
+                    if (step % 8 === 0 || step % 8 === 6) triggerPadSound('kick');
+                    if (step % 8 === 4) triggerPadSound('snare');
+                    if (step % 2 === 0) triggerPadSound('hihat');
+                } else if (preset === 'trap') {
+                    if (step % 16 === 0 || step % 16 === 10) triggerPadSound('kick');
+                    if (step % 8 === 4) triggerPadSound('snare');
+                    triggerPadSound('hihat');
+                } else if (preset === 'sa_piano') {
+                    if (step % 16 === 0 || step % 16 === 7 || step % 16 === 12) triggerPadSound('logdrum');
+                    if (step % 4 === 2) triggerPadSound('snare');
+                    if (step % 2 === 0) triggerPadSound('hihat');
+                }
+                step = (step + 1) % 16;
+            }, intervalMs);
+        }
+
+        function stopSynthBeat() {
+            if (activeInterval) {
+                clearInterval(activeInterval);
+                activeInterval = null;
+            }
+            document.getElementById('synth-status').innerText = 'Engine: Ready';
+        }
+
+        function toggleBeatLabModal() {
+            showSection('spotlight');
+        }
+
+        // Launch app on load
+        window.onload = function() {
+            initApp();
+        };
+    </script>
+</body>
+</html>
+
